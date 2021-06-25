@@ -1,0 +1,14 @@
+server:
+ port: 9000
+spring:
+ cloud:
+  gateway:
+   routes:
+   - id: jsonplaceholder
+     uri: https://jsonplaceholder.typicode.com/todos
+     predicates:
+     - Path=/todos/**
+   - id: healthCheck
+     uri: localhost:8080/healthCheck
+     predicates:
+     - Path=/localhost/**
